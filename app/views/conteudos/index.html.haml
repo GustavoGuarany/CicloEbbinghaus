@@ -1,0 +1,21 @@
+
+%div.col-md-11.mx-auto
+	%h1 Conteúdos Cadastrados 
+	%table.table.table-striped
+		%thead 
+			%tr
+				%th Titulo 
+				%th Descrição 
+				%th Link 
+				%th Palavras Chave 
+				%th Estudo Inicial
+		%tbody
+			- @conteudos.each do |conteudo|
+				%tr 
+					%td= conteudo.titulo 
+					%td= conteudo.descricao 
+					%td= link_to conteudo.link, conteudo.link, target: "_blank" 
+					%td= conteudo.palavra_chave 
+					%td= conteudo.primeiro_estudo
+
+	= link_to 'Novo Conteúdo', new_conteudo_path, class: 'btn btn-primary'

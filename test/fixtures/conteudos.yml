@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  titulo: MyString
+  descricao: MyText
+  link: MyString
+  palavra_chave: MyString
+  primeiro_estudo: 2024-04-18
+
+two:
+  titulo: MyString
+  descricao: MyText
+  link: MyString
+  palavra_chave: MyString
+  primeiro_estudo: 2024-04-18
