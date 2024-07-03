@@ -1,33 +1,37 @@
 %h1 Novo Conteúdo
+.col-md-4.p-4
+  = form_with model: @conteudo, local: true do |form|
+    - if @conteudo.errors.any?
+      #error_explanation
+        %h2= pluralize(@conteudo.errors.count, "error") + " prohibited this conteudo from being saved:"
+        %ul
+          - @conteudo.errors.full_messages.each do |message|
+            %li= message
 
-= form_with model: @conteudo, local: true do |form|
-  - if @conteudo.errors.any?
-    #error_explanation
-      %h2= pluralize(@conteudo.errors.count, "error") + " prohibited this conteudo from being saved:"
-      %ul
-        - @conteudo.errors.full_messages.each do |message|
-          %li= message
+    .field.p-2
+      = form.label :titulo, 'Titulo', class: 'form-label'
+      = form.text_field :titulo, id: :conteudo_titulo, class: 'form-control'
 
-  .field
-    = form.label :titulo, 'Titulo', class: 'form-label'
-    = form.text_field :titulo, id: :conteudo_titulo, class: 'form-control'
+    .field.p-2
+      = form.label :descricao, class: 'form-label'
+      = form.text_area :descricao, id: :conteudo_descricao, class: 'form-control'
+    
+    .field.p-2 
+      = form.label :link, class: 'form-label'
+      = form.text_field :link, id: :link_conteudo, class: 'form-control'
+    
+    .field.p-2
+      = form.label :palavra_chave, class: 'form-label'
+      = form.text_field :palavra_chave, id: :palavra_chave_conteudo, class: 'form-control'
+    
+    .field.p-2 
+      = form.label :primeiro_estudo, class: 'form-label'
+      = form.date_select :primeiro_estudo, id: :primeiro_estudo_conteudo, class: 'input-group date'
+    
+    .field.p-2
+      = form.label :resposta, class: 'form-label'
+      = form.text_area :resposta, id: :conteudo_resposta, class: 'form-control'
 
-  .field
-    = form.label :descricao, class: 'form-label'
-    = form.text_area :descricao, id: :conteudo_descricao, class: 'form-control'
-  
-  .field 
-    = form.label :link, class: 'form-label'
-    = form.text_field :link, id: :link_conteudo, class: 'form-control'
-  
-  .field.mb-3 
-    = form.label :palavra_chave, class: 'form-label'
-    = form.text_field :palavra_chave, id: :palavra_chave_conteudo, class: 'form-control'
-  
-  .field 
-    = form.label :primeiro_estudo, class: 'form-label'
-    = form.date_select :primeiro_estudo, id: :primeiro_estudo_conteudo, class: 'input-group date'
-
-  .actions
-    = form.submit "Salvar", class: 'btn btn-primary'
+    .actions
+      = form.submit "Salvar", class: 'btn btn-primary'
 

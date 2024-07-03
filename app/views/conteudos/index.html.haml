@@ -17,5 +17,8 @@
 					%td= link_to conteudo.link, conteudo.link, target: "_blank" 
 					%td= conteudo.palavra_chave 
 					%td= conteudo.primeiro_estudo
+					%td= link_to 'Editar', edit_conteudo_path(conteudo), class: 'btn btn-primary'
+					%td= button_to 'Deletar', conteudo_path(conteudo), method: :delete, data: { confirm: 'Tem certeza?' }, class: 'btn btn-danger'
+
 
 	= link_to 'Novo Conteúdo', new_conteudo_path, class: 'btn btn-primary'

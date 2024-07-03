@@ -1,8 +1,8 @@
 class ConteudosController < ApplicationController
-  before_action :set_content, only: [:show, :edit, :update, :destroy]
+  before_action :set_content, only: [:edit, :update, :destroy]
 
   def index
-    @conteudos = Conteudo.all
+    @conteudos = Conteudo.order(:id)
   end
 
   def show
@@ -18,7 +18,7 @@ class ConteudosController < ApplicationController
   def create
     @conteudo = Conteudo.new(content_params)
     if @conteudo.save
-      redirect_to @conteudo, notice: 'Content was successfully created.'
+      redirect_to conteudos_path, notice: 'Conteúdo Criado com Sucesso.'
     else
       render :new
     end
@@ -26,7 +26,7 @@ class ConteudosController < ApplicationController
 
   def update
     if @conteudo.update(content_params)
-      redirect_to @conteudo, notice: 'Content was successfully updated.'
+      redirect_to conteudos_path, notice: 'Conteúdo Atualizado com Sucesso.'
     else
       render :edit
     end
@@ -34,7 +34,7 @@ class ConteudosController < ApplicationController
 
   def destroy
     @conteudo.destroy
-    redirect_to contents_url, notice: 'Content was successfully destroyed.'
+    redirect_to conteudos_path, notice: 'Conteúdo Deletado com Sucesso.'
   end
 
   private
@@ -43,6 +43,6 @@ class ConteudosController < ApplicationController
     end
 
     def content_params
-      params.require(:conteudo).permit(:titulo, :descricao, :link, :palavra_chave, :primeiro_estudo )
+      params.require(:conteudo).permit(:titulo, :descricao, :link, :palavra_chave, :primeiro_estudo, :resposta )
     end
 end

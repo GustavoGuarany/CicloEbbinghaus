@@ -1,0 +1,39 @@
+%h1 Editar Conteúdo
+
+.col-md-4.p-4
+	= form_with(model: @conteudo, local: true) do |form|
+		- if @conteudo.errors.any?
+			#error_explanation
+				%h2
+					= pluralize(@conteudo.errors.count, "error")
+					prohibited this conteudo from being saved:
+				%ul
+					- @conteudo.errors.full_messages.each do |message|
+						%li= message
+
+		.field.pb-2
+			= form.label :titulo, class: 'form-label'
+			= form.text_field :titulo, class: 'form-control'
+
+		.field.pb-2
+			= form.label :descricao, class: 'form-label'
+			= form.text_area :descricao, class: 'form-control'
+
+		.field.pb-2
+			= form.label :link, class: 'form-label'
+			= form.text_field :link, class: 'form-control'
+
+		.field.pb-2
+			= form.label :palavra_chave, class: 'form-label'
+			= form.text_field :palavra_chave, class: 'form-control'
+
+		.field.pb-2
+			= form.label :primeiro_estudo, class: 'form-label'
+			= form.date_select :primeiro_estudo, class: 'form-control'
+		
+		.field.p-2
+			= form.label :resposta, class: 'form-label'
+			= form.text_area :resposta, class: 'form-control'
+
+		.actions.pb-2
+			= form.submit 'Salvar'

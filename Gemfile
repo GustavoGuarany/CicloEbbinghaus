@@ -17,6 +17,10 @@ gem 'popper_js', '~> 2.11.8'
 
 gem 'sass', '~> 3.4'
 
+gem 'pry'
+
+gem 'devise'
+
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.8", ">= 7.0.8.1"
 
