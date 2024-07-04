@@ -1,17 +1,29 @@
 !!! 5
 %html
   %head
-    %title CicloEbbinghaus
+    %title CicloEbbinghaus V2
     %meta{name: "viewport", content: "width=device-width,initial-scale=1"}
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
     = javascript_importmap_tags
 
+    :css
+      .custom-container {
+        width: 100%;
+        max-width: 1700px;
+        margin: 0 auto;
+      }
+
+      .custom-nav-link {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
   %body
     %nav.navbar.navbar-expand-lg.navbar-light.bg-light
       .container-fluid
-        %a.navbar-brand{href: "#"} Ciclo Ebbinghaus
+        %a.navbar-brand{href: "#"} Ciclo Ebbinghaus Versão 2
         %button.navbar-toggler{type: "button", "data-bs-toggle" => "collapse", "data-bs-target" => "#navbarSupportedContent", "aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation"}
           %span.navbar-toggler-icon
         #navbarSupportedContent.collapse.navbar-collapse
@@ -21,5 +33,19 @@
             %li.nav-item
               = link_to 'Conteúdos', conteudos_path, class: 'nav-link'
             %li.nav-item
-              %a.nav-link{href: "revisoes#index"} Revisões
-    = yield
+              = link_to 'Revisões', agenda_revisoes_path, class: 'nav-link'
+          %ul.navbar-nav.ms-auto
+            - if user_signed_in?
+              %li.nav-item
+                = button_to 'Sair', destroy_user_session_path, method: :delete, class: 'nav-link'
+            - else
+              %li.nav-item
+                = link_to 'Login', new_user_session_path, class: 'nav-link'
+              %li.nav-item
+                = link_to 'Inscrever-se', new_user_registration_path, class: 'nav-link'
+    .container.custom-container
+      - if notice
+        %p.notice= notice
+      - if alert
+        %p.alert= alert
+      = yield

@@ -1,4 +1,6 @@
-class RevisoesController < ApplicationController
+class AgendaRevisoesController < ApplicationController
+  before_action :authenticate_user!
+
 
   def index
     @conteudos = Conteudo.all 
