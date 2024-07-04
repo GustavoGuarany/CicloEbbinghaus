@@ -1,4 +1,5 @@
 class ConteudosController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_content, only: [:edit, :update, :destroy]
 
   def index

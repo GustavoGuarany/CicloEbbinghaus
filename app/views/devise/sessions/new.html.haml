@@ -1,0 +1,25 @@
+.container.mt-5
+  .row.justify-content-center
+    .col-md-6
+      .card
+        .card-body
+          %h2.text-center.mb-4 Entrar
+
+          = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+            .mb-3
+              = f.label :email, class: 'form-label', style: 'font-size: 0.875rem;'
+              = f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control'
+            
+            .mb-3
+              = f.label :password, 'Senha', class: 'form-label', style: 'font-size: 0.875rem;'
+              = f.password_field :password, autocomplete: "current-password", class: 'form-control'
+            
+            - if devise_mapping.rememberable?
+              .form-check.mb-3
+                = f.check_box :remember_me, class: 'form-check-input'
+                = f.label :remember_me, 'Lembrar', class: 'form-check-label', style: 'font-size: 0.875rem;'
+            
+            .d-grid
+              = f.submit "Entrar", class: 'btn btn-primary'
+
+          = render "devise/shared/links"
